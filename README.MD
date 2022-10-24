@@ -186,3 +186,4 @@ generate_training_data(YOURCONFIGFILE)
 ```
 
 **Now you can train the data with yolov5 (I uploaded another package to make your life easier)**
+https://github.com/hansalemaos/train_generated_data_ml
