@@ -1,0 +1,10 @@
+a_pandas_ex_less_memory_more_speed
+imgaug
+numpy
+opencv_python
+pandas
+pascal_voc_writer
+PILasOPENCV
+regex
+scikit_learn
+tqdm
