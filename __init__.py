@@ -533,7 +533,22 @@ def generate_training_data(config_file):
             )
             random_background_as_pilcv = PILasOPENCV.Image(background1)
             random_background_as_pilcv = random_background_as_pilcv.convert("RGBA")
-
+            editedpic=random_background_as_pilcv.getim()
+            try:
+                random_dark = (
+                    random.choices(
+                        [True, False],
+                        weights=[
+                            30,
+                            100 - 30,
+                        ],
+                        k=1,
+                    )
+                )[0]
+                if random_dark:
+                    editedpic=cv2.convertScaleAbs(editedpic, alpha=random.randrange(4,15)/10, beta=random.randrange(1,100))
+            except Exception as Fe:
+                print(Fe)
             writer.addObject(
                 tmpdfinfos["class_name"],
                 position_x_of_picture,
@@ -543,7 +558,8 @@ def generate_training_data(config_file):
             )
 
         try:
-            cv2.imwrite(picsavepath, random_background_as_pilcv.getim())
+
+            cv2.imwrite(picsavepath, editedpic)
             writer.save(picsavepathxml)
             annotations.append(picsavepathxml)
             images.append(picsavepath)
